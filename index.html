@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esta Rosa es para Tí</title>
+    <!-- Enlace al archivo CSS externo :) -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+        <!-- Contenedor del Mensaje -->
+        <div class="mensaje-contenedor">
+            <div class="mensaje-oculto" id="mensaje">"Esta rosa es para ti..."</div>
+        </div>
+
+        <!-- Cúpula de cristal :) -->
+        <div class="glass">
+            <div class="shine"></div>
+            <!-- Niebla mágica base -->
+            <div class="base-mist" id="mist"></div>
+            
+            <!-- Estructura del Moño de Regalo Superior -->
+            <div class="ribbon-container">
+                <div class="ribbon-knot"></div>
+                <div class="ribbon-loop-left"></div>
+                <div class="ribbon-loop-right"></div>
+                <div class="ribbon-tail-left"></div>
+                <div class="ribbon-tail-right"></div>
+            </div>
+
+            <!-- Base de Madera -->
+            <div class="wood-base"></div>
+        </div>
+
+        <!-- Brillos mágicos internos :) -->
+        <div class="sparkles">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+
+        <!-- Elementos de la rosa  :)-->
+        <div class="thorns">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="leaves">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="petals">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+        <div class="deadPetals">
+            <div></div>
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </div>
+
+    <!-- Botón de Control :) -->
+    <button class="music-btn" onclick="toggleMusic()">
+        🎵 Reproducir Música
+    </button>
+
+    <!-- Reproductor de Audio -->
+    <audio id="musica">
+        <source src="https://misleading-red-zaozz68z.edgeone.app/La%20Oreja%20de%20Van%20Gogh%20-%20Rosas%20(Letra_Lyrics)(MP3_160K).mp3" type="audio/mpeg">
+    </audio> 
+
+    <!-- Enlace al archivo JavaScript externo -->
+    <script src="script.js"></script>
+</body>
+</html>

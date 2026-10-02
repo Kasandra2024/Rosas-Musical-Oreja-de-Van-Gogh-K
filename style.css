@@ -1,0 +1,354 @@
+body {
+    height: 100vh;
+    width: 100vw;
+    background: #080f1a;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    position: relative;
+}
+
+.container {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+/* Mensaje con Efecto Máquina de Escribir :) */
+.mensaje-contenedor {
+    position: absolute;
+    top: -120px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: max-content;
+    z-index: 20;
+}
+
+.mensaje-oculto {
+    color: #f594b8;
+    font-family: 'Georgia', serif;
+    font-style: italic;
+    font-size: 24px;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 0; 
+    text-shadow: 0 0 15px rgba(245, 148, 184, 0.7);
+}
+
+.mensaje-oculto.animar {
+    animation: escribir 3s steps(25) forwards;
+}
+
+@keyframes escribir {
+    from { width: 0; }
+    to { width: 100%; }
+}
+
+/* Cúpula de Cristal :) */
+.glass {
+    height: 350px;
+    width: 200px;
+    background: linear-gradient(to bottom, rgba(18, 33, 57, 0.25), rgba(18, 33, 57, 0.55));
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-bottom: none;
+    border-radius: 300px 300px 0px 0px;
+    box-shadow: inset 0px 20px 30px rgba(255, 255, 255, 0.08);
+    position: relative;
+}
+
+/* MOÑO ULTRA ESTILIZADO Y REALISTA :v */
+.ribbon-container {
+    position: absolute;
+    top: -24px; 
+    left: 100px;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 60px;
+    z-index: 100;
+    pointer-events: none;
+}
+
+/* Nudo Central con relieve */
+.ribbon-knot {
+    position: absolute;
+    top: 12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 18px;
+    height: 22px;
+    background: linear-gradient(135deg, #d52d58 0%, #8a102e 70%, #520516 100%);
+    border-radius: 8px;
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.5), inset 0 1px 3px rgba(255,255,255,0.3);
+    z-index: 10;
+}
+
+/* Alas del Moño con gradiente de seda y volumen :v */
+.ribbon-loop-left, .ribbon-loop-right {
+    position: absolute;
+    top: 2px;
+    width: 46px;
+    height: 38px;
+    box-shadow: 
+        inset 3px 4px 8px rgba(255, 255, 255, 0.25), 
+        0 4px 10px rgba(0, 0, 0, 0.6);
+}
+
+.ribbon-loop-left {
+    left: 6px;
+    background: linear-gradient(135deg, #e63966 0%, #b81b43 50%, #71122a 100%);
+    border-radius: 75% 35% 45% 65%;
+    transform: rotate(-12deg);
+}
+
+.ribbon-loop-right {
+    right: 6px;
+    background: linear-gradient(225deg, #e63966 0%, #b81b43 50%, #71122a 100%);
+    border-radius: 35% 75% 65% 45%;
+    transform: rotate(12deg);
+}
+
+/* Listones caídos con cortes elegantes en V */
+.ribbon-tail-left, .ribbon-tail-right {
+    position: absolute;
+    top: 28px;
+    width: 18px;
+    height: 42px;
+    box-shadow: 2px 4px 8px rgba(0, 0, 0, 0.4);
+}
+
+.ribbon-tail-left {
+    left: 28px;
+    background: linear-gradient(105deg, #9d193b 0%, #610c21 100%);
+    transform: rotate(18deg);
+    border-radius: 0 0 4px 12px;
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 50% 82%, 0% 100%);
+}
+
+.ribbon-tail-right {
+    right: 28px;
+    background: linear-gradient(-105deg, #9d193b 0%, #610c21 100%);
+    transform: rotate(-18deg);
+    border-radius: 0 0 12px 4px;
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 50% 82%, 0% 100%);
+}
+
+/* Base de madera */
+.wood-base {
+    position: absolute;
+    height: 15px;
+    width: 250px;
+    background: #a52a2a;
+    top: 100%;
+    left: -13%;
+    border-radius: 4px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+}
+
+/* Niebla mágica en la base */
+.base-mist {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 170px;
+    height: 15px;
+    background: radial-gradient(ellipse at center, rgba(245, 148, 184, 0.25) 0%, transparent 70%);
+    filter: blur(4px);
+    z-index: 2;
+    opacity: 0;
+    transition: opacity 2s ease;
+}
+
+.base-mist.mostrar {
+    opacity: 1;
+    animation: pulseMist 4s ease-in-out infinite;
+}
+
+@keyframes pulseMist {
+    0%, 100% { transform: translateX(-50%) scaleX(1); opacity: 0.3; }
+    50% { transform: translateX(-50%) scaleX(1.15); opacity: 0.6; }
+}
+
+/* Brillo del cristal */
+.shine {
+    width: 12px;
+    height: 140px;
+    background: white;
+    opacity: 0.2;
+    position: absolute;
+    left: 85%;
+    top: 80px;
+    border-radius: 100px;
+    z-index: 10;
+}
+
+.shine:before {
+    content: "";
+    width: 12px;
+    height: 20px;
+    position: absolute;
+    background: white;
+    top: 160px;
+    border-radius: 100px;
+}
+
+/* Luces Mágicas / Sparkles internos */
+.sparkles > div {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: white;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #f594b8, 0 0 20px #fff;
+    opacity: 0;
+    z-index: 6;
+}
+.sparkles > div:nth-child(1) { left: 60px; top: 120px; animation: floatSparkle 4s infinite 1s; }
+.sparkles > div:nth-child(2) { left: 140px; top: 100px; animation: floatSparkle 5s infinite 2s; }
+.sparkles > div:nth-child(3) { left: 80px; top: 180px; animation: floatSparkle 6s infinite 0.5s; }
+.sparkles > div:nth-child(4) { left: 120px; top: 220px; animation: floatSparkle 4.5s infinite 3s; }
+
+@keyframes floatSparkle {
+    0% { transform: translateY(0) scale(0); opacity: 0; }
+    50% { opacity: 0.8; }
+    100% { transform: translateY(-50px) scale(1.2); opacity: 0; }
+}
+
+/* Pétalos principales */
+.petals > div {
+    position: absolute;
+    background: #d52d58;
+    width: 45px;
+    height: 80px;
+    top: 55px;
+    transition: all 0.5s ease-out;
+}
+
+.petals > div:nth-child(1) {
+    border-radius: 15px;
+    box-shadow: 0px 0px 30px #f594b8;
+    left: 80px;
+    top: 60px;
+    background: #d52d58;
+}
+
+.petals > div:nth-child(2), .petals > div:nth-child(4), .petals > div:nth-child(6) {
+    background: #b81b43;
+    left: 60px;
+    border-radius: 0px 30px 0px 30px;
+    transform-origin: bottom right;
+}
+
+.petals > div:nth-child(3), .petals > div:nth-child(5), .petals > div:nth-child(7) {
+    background: #b81b43;
+    left: 100px;
+    border-radius: 30px 0px 30px 0px;
+    transform-origin: bottom left;
+}
+
+.petals > div:nth-child(2) { z-index: 5; background: #ab1a3f; top: 75px; height: 70px; box-shadow: 0px 0px 50px rgba(245, 148, 184, 0.5); animation: bloom2 3s ease-in-out forwards; }
+.petals > div:nth-child(3) { z-index: 4; background: #ab1a3f; top: 75px; height: 70px; box-shadow: 0px 0px 50px rgba(245, 148, 184, 0.5); animation: bloom3 3s ease-in-out forwards, glowing 2.5s ease-in-out infinite; }
+.petals > div:nth-child(4) { z-index: 3; background: #b81b43; top: 70px; height: 75px; box-shadow: 0px 0px 50px rgba(245, 148, 184, 0.5); animation: bloom4 3s ease-in-out forwards, glowing 2.5s ease-in-out infinite; }
+.petals > div:nth-child(5) { z-index: 2; background: #b81b43; top: 70px; height: 75px; box-shadow: 0px 0px 50px rgba(245, 148, 184, 0.5); animation: bloom5 3s ease-in-out forwards, glowing 2.5s ease-in-out infinite; }
+.petals > div:nth-child(6) { z-index: 1; background: #c9204b; top: 65px; height: 70px; box-shadow: 0px 0px 50px rgba(245, 148, 184, 0.3); animation: bloom6 3s ease-in-out forwards, glowing 2.5s ease-in-out infinite; }
+.petals > div:nth-child(7) { z-index: 0; background: #c9204b; top: 65px; height: 70px; box-shadow: 0px 0px 50px rgba(245, 148, 184, 0.3); animation: bloom7 3s ease-in-out forwards, glowing 2.5s ease-in-out infinite; }
+
+/* Pétalos caídos internos */
+.deadPetals > div {
+    position: absolute;
+    background: #d52d58;
+    width: 20px;
+    height: 15px;
+    top: 120px;
+    border-radius: 0px 30px 0px 30px;
+    box-shadow: 0px 0px 30px rgba(245, 148, 184, 0.5);
+    transition: all 0.5s ease-out;
+}
+
+.deadPetals > div:nth-child(1) { left: 67px; transform: rotate(-30deg); animation: falling 20s 4s ease-in-out infinite; }
+.deadPetals > div:nth-child(2) { left: 104px; transform: rotate(-30deg); animation: falling 20s 8s ease-in-out infinite; }
+.deadPetals > div:nth-child(3) { left: 91px; transform: rotate(-30deg); animation: falling 20s 12s ease-in-out infinite; }
+.deadPetals > div:nth-child(4) { left: 69px; transform: rotate(-30deg); animation: falling 20s 16s ease-in-out infinite; }
+
+/* Tallo y Hojas */
+.leaves > div:nth-last-child(1) { position: absolute; width: 55px; height: 30px; background: #338f37; top: 120px; left: 75px; border-radius: 100px; }
+.leaves > div:nth-child(1) { position: absolute; width: 6px; height: 210px; background: #054c05; top: 95px; left: 100px; border-radius: 0 0 100px 100px; }
+.leaves > div:nth-child(2) { position: absolute; width: 30px; height: 50px; border-radius: 5px 40px 20px 40px; background: #054c05; transform-origin: bottom; transform: rotate(-30deg); top: 180px; left: 80px; box-shadow: inset 5px 5px #066406; }
+.leaves > div:nth-child(3) { position: absolute; width: 30px; height: 50px; border-radius: 40px 5px 40px 20px; background: #054c05; transform-origin: bottom; transform: rotate(30deg); top: 150px; left: 95px; box-shadow: inset -5px 5px #066406; }
+
+/* Espinas */
+.thorns > div { position: absolute; width: 0; height: 0; }
+.thorns > div:nth-child(odd) { border-top: 5px solid transparent; border-bottom: 5px solid transparent; border-left: 5px solid #054c05; left: 105px; }
+.thorns > div:nth-child(even) { border-top: 5px solid transparent; border-bottom: 5px solid transparent; border-right: 5px solid #054c05; left: 95px; }
+.thorns > div:nth-child(1) { top: 200px; }
+.thorns > div:nth-child(2) { top: 170px; }
+.thorns > div:nth-child(3) { top: 255px; }
+.thorns > div:nth-child(4) { top: 230px; }
+
+/* Keyframes Animaciones Rosa */
+@keyframes bloom2 {
+    50% { transform: rotate(-90deg); top: 200px; left: 100px; }
+    100% { transform: rotate(-60deg); top: 252px; left: 50px; background: #71122a; box-shadow: 0px 0px 0px rgba(245, 148, 184, 0); }
+}
+@keyframes bloom3 { 100% { transform: rotate(45deg); } }
+@keyframes bloom4 { 100% { transform: rotate(-20deg); } }
+@keyframes bloom5 { 100% { transform: rotate(20deg); } }
+@keyframes bloom6 { 100% { transform: rotate(-5deg); } }
+@keyframes bloom7 { 100% { transform: rotate(5deg); } }
+@keyframes glowing { 50% { background: #d7365f; box-shadow: 0px 0px 60px #f594b8; } }
+@keyframes falling {
+    20% { top: 335px; background: #9d193b; box-shadow: 0px 0px 0px rgba(245, 148, 184, 0); }
+    100% { top: 335px; opacity: 0; }
+}
+
+/* Pétalos de Fondo (Background Rain) */
+.bg-petal {
+    position: absolute;
+    background: linear-gradient(135deg, #d52d58, #b81b43);
+    border-radius: 0 100px 40px 100px;
+    opacity: 0.4;
+    pointer-events: none;
+    z-index: -1; 
+    animation: caerPetalo linear forwards;
+}
+
+@keyframes caerPetalo {
+    0% { transform: translateY(-10vh) rotate(0deg); opacity: 0; }
+    10% { opacity: 0.5; }
+    90% { opacity: 0.4; }
+    100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+}
+
+/* Botón de Música Estilizado */
+.music-btn {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    padding: 12px 24px;
+    border: 1px solid #d52d58;
+    border-radius: 30px;
+    background: rgba(18, 33, 57, 0.8);
+    backdrop-filter: blur(8px);
+    color: #f594b8;
+    font-family: 'Segoe UI', sans-serif;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    box-shadow: 0 0 15px rgba(213, 45, 88, 0.3);
+    transition: all .35s ease;
+    z-index: 9999;
+}
+
+.music-btn:hover {
+    transform: translateY(-3px);
+    background: #d52d58;
+    color: white;
+    box-shadow: 0 5px 25px rgba(213, 45, 88, 0.6);
+}
+
+.music-btn:active {
+    transform: translateY(-1px) scale(0.97);
+}
