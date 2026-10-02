@@ -321,11 +321,12 @@ body {
     100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
 }
 
-/* Botón de Música Estilizado */
+/* Botón de Música Estilizado Centrado Abajo */
 .music-btn {
-    position: fixed;
-    bottom: 25px;
-    right: 25px;
+    position: absolute;
+    top: calc(50% + 220px); /* Lo coloca exactamente debajo de la base de madera (ajusta este número si deseas más o menos distancia) */
+    left: 50%;
+    transform: translateX(-50%);
     padding: 12px 24px;
     border: 1px solid #d52d58;
     border-radius: 30px;
@@ -343,12 +344,12 @@ body {
 }
 
 .music-btn:hover {
-    transform: translateY(-3px);
+    transform: translateX(-50%) translateY(-3px);
     background: #d52d58;
     color: white;
     box-shadow: 0 5px 25px rgba(213, 45, 88, 0.6);
 }
 
 .music-btn:active {
-    transform: translateY(-1px) scale(0.97);
+    transform: translateX(-50%) translateY(-1px) scale(0.97);
 }
