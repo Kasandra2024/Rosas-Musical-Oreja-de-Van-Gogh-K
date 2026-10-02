@@ -12,11 +12,7 @@ function crearPetaloFondo() {
     petalo.style.width = `${tamaño}px`;
     petalo.style.height = `${tamaño * 1.5}px`;
     
-    // --- FORZAR POSICIÓN EN TODA LA PANTALLA ---
-    petalo.style.position = "fixed";
-    petalo.style.top = "-20px";
-    // ------------------------------------------
-
+    // Posición aleatoria en todo el ancho de la pantalla
     petalo.style.left = `${Math.random() * 100}vw`;
     
     const duracion = Math.random() * 6 + 6;
@@ -48,5 +44,23 @@ function toggleMusic(){
         
         clearInterval(lluviaInterval);
         lluviaInterval = null;
+    }
+}
+
+// Inicia la lluvia de pétalos de forma continua desde el primer segundo que carga la página
+setInterval(crearPetaloFondo, 400);
+
+function toggleMusic(){
+    if(audio.paused){
+        audio.play().then(() => {
+            boton.innerHTML = "⏸ Pausar Música";
+            mensaje.classList.add("animar");
+            mist.classList.add("mostrar");
+        }).catch(error => {
+            console.log("Error al reproducir audio:", error);
+        });
+    } else {
+        audio.pause();
+        boton.innerHTML = "🎵 Reproducir Música";
     }
 }
