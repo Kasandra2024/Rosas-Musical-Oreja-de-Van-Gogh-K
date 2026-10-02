@@ -12,7 +12,11 @@ function crearPetaloFondo() {
     petalo.style.width = `${tamaño}px`;
     petalo.style.height = `${tamaño * 1.5}px`;
     
-    // Aquí está el cambio: ahora abarca de 0 a 100vw para que caigan por toda la pantalla
+    // --- FORZAR POSICIÓN EN TODA LA PANTALLA ---
+    petalo.style.position = "fixed";
+    petalo.style.top = "-20px";
+    // ------------------------------------------
+
     petalo.style.left = `${Math.random() * 100}vw`;
     
     const duracion = Math.random() * 6 + 6;
@@ -24,7 +28,6 @@ function crearPetaloFondo() {
         petalo.remove();
     }, duracion * 1000);
 }
-
 function toggleMusic(){
     if(audio.paused){
         audio.play().then(() => {
