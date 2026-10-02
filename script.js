@@ -12,11 +12,8 @@ function crearPetaloFondo() {
     petalo.style.width = `${tamaño}px`;
     petalo.style.height = `${tamaño * 1.5}px`;
     
-    if (Math.random() < 0.5) {
-        petalo.style.left = `${Math.random() * 35}vw`;
-    } else {
-        petalo.style.left = `${65 + (Math.random() * 35)}vw`;
-    }
+    // Aquí está el cambio: ahora abarca de 0 a 100vw para que caigan por toda la pantalla
+    petalo.style.left = `${Math.random() * 100}vw`;
     
     const duracion = Math.random() * 6 + 6;
     petalo.style.animationDuration = `${duracion}s`;
@@ -35,7 +32,6 @@ function toggleMusic(){
             mensaje.classList.add("animar");
             mist.classList.add("mostrar");
 
-            // Asegurar que no se dupliquen intervalos y limpiar si ya existía
             if(lluviaInterval) {
                 clearInterval(lluviaInterval);
             }
