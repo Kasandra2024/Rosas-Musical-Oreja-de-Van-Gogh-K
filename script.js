@@ -30,15 +30,19 @@ function crearPetaloFondo() {
 
 function toggleMusic(){
     if(audio.paused){
-        audio.play();
-        boton.innerHTML = "⏸ Pausar Música";
-        
-        mensaje.classList.add("animar");
-        mist.classList.add("mostrar");
+        audio.play().then(() => {
+            boton.innerHTML = "⏸ Pausar Música";
+            mensaje.classList.add("animar");
+            mist.classList.add("mostrar");
 
-        if(!lluviaInterval) {
+            // Asegurar que no se dupliquen intervalos y limpiar si ya existía
+            if(lluviaInterval) {
+                clearInterval(lluviaInterval);
+            }
             lluviaInterval = setInterval(crearPetaloFondo, 400);
-        }
+        }).catch(error => {
+            console.log("Error al reproducir audio:", error);
+        });
     } else {
         audio.pause();
         boton.innerHTML = "🎵 Reproducir Música";
